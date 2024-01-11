@@ -14,12 +14,14 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(R.layout.activity_main)
+        setContentView(binding.root) // Use the root view of the binding
+
 
         quoteViewModel.quoteModel.observe(this, Observer {
             binding.tvQuote.text = it.quote
             binding.tvAuthor.text = it.author
         })
 
-        binding.viewContainer.setOnClickListener{ quoteViewModel.randomQuote()}    }
+        binding.viewContainer.setOnClickListener { quoteViewModel.randomQuote() }
+    }
 }
