@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    kotlin("kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -35,6 +37,15 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+    // Allow references to generated code
+    kapt {
+        correctErrorTypes = true
+        useBuildCache = true // Optional: enable build cache for kapt
+        javacOptions {
+            // Specify the Java version here
+            option("-target", "1.8")
+        }
     }
     buildFeatures {
         compose = true
@@ -82,5 +93,8 @@ dependencies {
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
     //Corrutinas
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.6")
+    // Dagger Hilt
+    implementation("com.google.dagger:hilt-android:2.46.1")
+    kapt("com.google.dagger:hilt-android-compiler:2.46.1")
 
 }

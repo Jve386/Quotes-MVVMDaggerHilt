@@ -26,7 +26,7 @@ class MainActivity : ComponentActivity() {
         })
 
         quoteViewModel.isLoading.observe(this, Observer {
-            binding.ProgressBar.isVisible = it
+            binding.loading.isVisible = it
         })
 
 
