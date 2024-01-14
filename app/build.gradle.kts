@@ -32,11 +32,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_18
-        targetCompatibility = JavaVersion.VERSION_18
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "18"
+        jvmTarget = "1.8"
     }
     // Allow references to generated code
     kapt {
@@ -44,7 +44,7 @@ android {
         useBuildCache = true // Optional: enable build cache for kapt
         javacOptions {
             // Specify the Java version here
-            option("target", "18")
+            option("target", "1.8")
         }
     }
     hilt {

@@ -8,9 +8,9 @@ import javax.inject.Singleton
 
 class GetRandomQuoteUseCase @Inject constructor(private val quoteProvider: QuoteProvider) {
 
-    operator fun invoke():QuoteModel?{
+    operator fun invoke(): QuoteModel? {
         val quotes = quoteProvider.quotes
-        if(!quotes.isNullOrEmpty()){
+        if (quotes.isNotEmpty()) {
             val randomNumber = (quotes.indices).random()
             return quotes[randomNumber]
         }
