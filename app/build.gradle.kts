@@ -32,11 +32,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_18
+        targetCompatibility = JavaVersion.VERSION_18
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "18"
     }
     // Allow references to generated code
     kapt {
@@ -44,8 +44,12 @@ android {
         useBuildCache = true // Optional: enable build cache for kapt
         javacOptions {
             // Specify the Java version here
-            option("-target", "1.8")
+            option("target", "18")
         }
+    }
+    hilt {
+        enableAggregatingTask = true
+        enableTransformForLocalTests = true
     }
     buildFeatures {
         compose = true
@@ -92,7 +96,7 @@ dependencies {
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
     //Corrutinas
-    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.6")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")
     // Dagger Hilt
     implementation("com.google.dagger:hilt-android:2.46.1")
     kapt("com.google.dagger:hilt-android-compiler:2.46.1")

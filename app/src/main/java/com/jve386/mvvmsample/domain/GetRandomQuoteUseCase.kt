@@ -3,15 +3,15 @@ package com.jve386.mvvmsample.domain
 import com.jve386.mvvmsample.data.QuoteRepository
 import com.jve386.mvvmsample.data.model.QuoteModel
 import com.jve386.mvvmsample.data.model.QuoteProvider
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class GetRandomQuoteUseCase {
+class GetRandomQuoteUseCase @Inject constructor(private val quoteProvider: QuoteProvider) {
 
-    private val repository = QuoteRepository()
-
-    operator fun invoke(): QuoteModel? {
-        val quotes = QuoteProvider.quotes
+    operator fun invoke():QuoteModel?{
+        val quotes = quoteProvider.quotes
         if(!quotes.isNullOrEmpty()){
-            val randomNumber = (0..quotes.size-1).random()
+            val randomNumber = (quotes.indices).random()
             return quotes[randomNumber]
         }
         return null

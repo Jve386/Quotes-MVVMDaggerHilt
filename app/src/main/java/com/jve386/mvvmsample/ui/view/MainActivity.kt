@@ -8,7 +8,9 @@ import androidx.lifecycle.Observer
 import com.jve386.mvvmsample.R
 import com.jve386.mvvmsample.databinding.ActivityMainBinding
 import com.jve386.mvvmsample.ui.viewmodel.QuoteViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     private lateinit var binding: ActivityMainBinding
     private val quoteViewModel: QuoteViewModel by viewModels()
@@ -28,7 +30,6 @@ class MainActivity : ComponentActivity() {
         quoteViewModel.isLoading.observe(this, Observer {
             binding.loading.isVisible = it
         })
-
 
         binding.viewContainer.setOnClickListener{ quoteViewModel.randomQuote() }
     }
